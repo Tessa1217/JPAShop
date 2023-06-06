@@ -2,6 +2,7 @@ package jpabook.jpashop.service;
 
 import java.util.List;
 
+import jpabook.jpashop.domain.item.Book;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,7 +28,22 @@ public class ItemService {
 	public void saveItem(Item item) {
 		itemRepository.save(item);
 	}
-	
+
+	/**
+	 * @methodName  : updateItem
+	 * @author      : 권유진
+	 * @date        : 2023.06.04
+	 * @description : 변경 감지를 이용한 UPDATE 방법
+	 * @param itemId, bookParam
+	 */
+	@Transactional
+	public void updateItem(Long itemId, String name, int price, int stockQuantity) {
+		Item findItem = itemRepository.findOne(itemId);
+		findItem.setPrice(price);
+		findItem.setName(name);
+		findItem.setStockQuantity(stockQuantity);
+	}
+
 	/**
 	 * @methodName  : findItems
 	 * @author      : 권유진

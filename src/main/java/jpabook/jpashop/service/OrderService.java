@@ -2,14 +2,10 @@ package jpabook.jpashop.service;
 
 import java.util.List;
 
+import jpabook.jpashop.domain.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import jpabook.jpashop.domain.Delivery;
-import jpabook.jpashop.domain.Item;
-import jpabook.jpashop.domain.Member;
-import jpabook.jpashop.domain.Order;
-import jpabook.jpashop.domain.OrderItem;
 import jpabook.jpashop.repository.ItemRepository;
 import jpabook.jpashop.repository.MemberRepository;
 import jpabook.jpashop.repository.OrderRepository;
@@ -85,8 +81,9 @@ public class OrderService {
 	 * @description : 주문 검색
 	 * @return List<Order>
 	 */
-	public List<Order> searchOrders() {
-		return orderRepository.findAll();
+	public List<Order> findOrders(OrderSearch orderSearch) {
+//		return orderRepository.findAll(orderSearch);
+		return orderRepository.findAllByCriteria(orderSearch);
 	}
 
 }

@@ -107,13 +107,13 @@ public class OrderRepository {
 	 * @param orderSearch
 	 * @return
 	 */
-	/*
-	 * public List<Order> findAll(OrderSearch orderSearch) { QOrder order =
-	 * QOrder.order; QMember member = QMember.member;
-	 * 
-	 * 
-	 * 
-	 * }
-	 */
+
+//	 public List<Order> findAll(OrderSearch orderSearch) {
+//		 QOrder order =
+//				 QOrder.order;
+//		 QMember member = QMember.member;
+//
+//
+//	 }
 
 }
