@@ -75,7 +75,21 @@ public class MemberService {
 	public Member findMember(Long memberId) {
 		return memberRepository.findOne(memberId);
 	}
-	
+
+	/**
+	 * @methodName  : updateMember
+	 * @author      : 권유진
+	 * @date        : 2023.06.04
+	 * @description : 회원 수정
+	 * @param id
+	 * @param name
+	 * @return Member
+	 */
+	@Transactional
+	public void updateMember(Long id, String name) {
+		Member member = memberRepository.findOne(id);
+		member.setName(name);
+	}
 	
 
 }
