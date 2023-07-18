@@ -12,6 +12,7 @@ import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import jpabook.jpashop.api.dto.SimpleOrderDTO;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
 
@@ -115,5 +116,20 @@ public class OrderRepository {
 //
 //
 //	 }
+
+	public List<Order> findAllWithMemberDelivery() {
+		return em.createQuery("select o from Order o" +
+				               " join fetch o.member m" +
+				               " join fetch o.delivery d", Order.class
+				             ).getResultList();
+	}
+
+	public List<SimpleOrderDTO> findOrderDTOs() {
+		return em.createQuery(
+				"select new jpabook.jpashop.api.dto.SimpleOrderDTO(o.id, m.name, o.orderDate, o.status, d.address) from Order o" +
+						" join o.member m" +
+						" join o.delivery d", SimpleOrderDTO.class
+		).getResultList();
+	}
 
 }
